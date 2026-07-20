@@ -72,6 +72,10 @@ const CONFIG = {
   receptionSub: "Ceremonial House for Police Officers",
   address: "26WC+QV2, Zamalek, Cairo Governorate 4270104, Egypt",
   mapsUrl: "https://maps.app.goo.gl/Qxobt6Khvy9KZHjf6",
+  // Coordinates for the Police Officers Club / Akhenaten Hall — used to
+  // center the embedded map preview below.
+  venueLat: 30.0473389,
+  venueLng: 31.2223459,
   arabicVerse:
     "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ",
   closing: "Your presence would be the greatest gift we could receive!",
@@ -980,21 +984,25 @@ export default function WeddingInvitation() {
           <p className="mt-1 text-sm text-[#5c4632]">{CONFIG.ceremonyVenue}</p>
           <p className="text-sm text-[#8a6a4f]">{CONFIG.ceremonySub}</p>
 
-          <div className="relative mt-4 h-40 overflow-hidden rounded-xl border border-[#c9ae86]/40">
-            <svg viewBox="0 0 300 160" className="h-full w-full" preserveAspectRatio="none">
-              <rect width="300" height="160" fill="#EFE3D0" />
-              <path d="M0 40 H300 M0 90 H300 M60 0 V160 M200 0 V160" stroke="#D9C7A8" strokeWidth="3" />
-              <path d="M0 120 H300" stroke="#D9C7A8" strokeWidth="6" />
-            </svg>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="flex flex-col items-center">
-                <MapPin size={26} className="text-[#8a3b2e]" fill="#8a3b2e" />
-              </div>
-            </div>
+          <a
+            href={CONFIG.mapsUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="relative mt-4 block h-48 overflow-hidden rounded-xl border border-[#c9ae86]/40"
+            aria-label="Open venue location in Google Maps"
+          >
+            <iframe
+              title="Venue location"
+              src={`https://www.google.com/maps?q=${CONFIG.venueLat},${CONFIG.venueLng}&z=16&output=embed`}
+              className="h-full w-full grayscale-15 sepia-10"
+              style={{ border: 0, pointerEvents: "none" }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
             <div className="absolute bottom-2 right-2 rounded bg-white/85 px-2 py-1 text-[10px] text-[#5c4632]">
-              map preview
+              tap to open in Maps
             </div>
-          </div>
+          </a>
           <p className="mt-2 text-xs text-[#8a6a4f]">{CONFIG.address}</p>
           <a
             href={CONFIG.mapsUrl}
