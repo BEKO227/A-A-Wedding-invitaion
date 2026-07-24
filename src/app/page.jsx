@@ -541,7 +541,6 @@ export default function WeddingInvitation() {
             </div>
 
             <div className="relative z-10 flex min-h-140 flex-col px-9 pb-8 pt-10 text-center">
-              <p className="text-[10px] tracking-[0.35em]" style={{ color: T.inkFaint }}>{CONFIG.familiesLabel}</p>
               <p className="mt-8 font-serif text-2xl" style={{ fontFamily: "'Amiri', serif", color: T.ink }}>{CONFIG.bismillah}</p>
 
               <p dir="rtl" className="mx-auto mt-4 max-w-65 text-[13px] leading-[1.9]" style={{ fontFamily: "'Amiri', serif", color: T.inkSoft }}>
@@ -653,27 +652,6 @@ export default function WeddingInvitation() {
                 <p className="text-3xl" style={{ fontFamily: "'Parisienne', cursive", color: T.ink }}>Reception</p>
                 <p className="mt-1 text-sm" style={{ color: T.inkSoft }}>{CONFIG.receptionVenue} @ {CONFIG.receptionTime}</p>
               </section>
-            </Reveal>
-
-            <FloralDivider />
-
-            {/* RSVP */}
-            <Reveal>
-              <div className="flex flex-col items-center gap-4">
-                {confirmed ? (
-                  <div className="rounded-sm px-5 py-3 text-center text-sm" style={{ background: T.ivoryDeep, border: `1px solid ${T.line}`, color: T.inkSoft }}>
-                    Thank you, {confirmed.name} — we've recorded that you{" "}
-                    {confirmed.attending === "yes" ? `will join us (party of ${confirmed.guests}).` : "can't make it, but you'll be missed."}
-                  </div>
-                ) : (
-                  <QuietButton onClick={() => setRsvpOpen(true)}>CONFIRM ATTENDANCE ONLINE</QuietButton>
-                )}
-                {joiningCount > 0 && (
-                  <p className="text-[11px] tracking-wide" style={{ color: T.sageDeep }}>
-                    {joiningCount} guest{joiningCount === 1 ? "" : "s"} joining us so far
-                  </p>
-                )}
-              </div>
             </Reveal>
 
             <FloralDivider />
